@@ -288,6 +288,9 @@
 		B6F66E351E473D68005B270A /* memory_pages.c in Sources */ = {isa = PBXBuildFile; fileRef = B6F66E331E473D68005B270A /* memory_pages.c */; };
 		B6FA759D0C1D7507007F5A10 /* audiofile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6FA759C0C1D7507007F5A10 /* audiofile.framework */; };
 		B6FA75C60C1D76A5007F5A10 /* audiofile.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B6FA759C0C1D7507007F5A10 /* audiofile.framework */; };
+		D15E8F93259F5C0C0006FC79 /* gdbserver_utils.c in Sources */ = {isa = PBXBuildFile; fileRef = D15E8F8D259F5C0B0006FC79 /* gdbserver_utils.c */; };
+		D15E8F94259F5C0C0006FC79 /* packets.c in Sources */ = {isa = PBXBuildFile; fileRef = D15E8F8F259F5C0B0006FC79 /* packets.c */; };
+		D15E8F95259F5C0C0006FC79 /* gdbserver.c in Sources */ = {isa = PBXBuildFile; fileRef = D15E8F91259F5C0B0006FC79 /* gdbserver.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -731,6 +734,13 @@
 		B6FEA44B0444C2CC0013916D /* tc2068-0.rom */ = {isa = PBXFileReference; lastKnownFileType = file; name = "tc2068-0.rom"; path = "../roms/tc2068-0.rom"; sourceTree = SOURCE_ROOT; };
 		B6FEA44C0444C2CC0013916D /* tc2068-1.rom */ = {isa = PBXFileReference; lastKnownFileType = file; name = "tc2068-1.rom"; path = "../roms/tc2068-1.rom"; sourceTree = SOURCE_ROOT; };
 		B6FEA44F0444C3370013916D /* tc2068.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = tc2068.c; sourceTree = "<group>"; };
+		D15E8F8C259F5C0B0006FC79 /* arch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = arch.h; sourceTree = "<group>"; };
+		D15E8F8D259F5C0B0006FC79 /* gdbserver_utils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gdbserver_utils.c; sourceTree = "<group>"; };
+		D15E8F8E259F5C0B0006FC79 /* gdbserver_utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gdbserver_utils.h; sourceTree = "<group>"; };
+		D15E8F8F259F5C0B0006FC79 /* packets.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = packets.c; sourceTree = "<group>"; };
+		D15E8F90259F5C0B0006FC79 /* packets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = packets.h; sourceTree = "<group>"; };
+		D15E8F91259F5C0B0006FC79 /* gdbserver.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gdbserver.c; sourceTree = "<group>"; };
+		D15E8F92259F5C0C0006FC79 /* gdbserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gdbserver.h; sourceTree = "<group>"; };
 		F520C8BC038D022E01A804BA /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
 		F536B56503A0C275011517A0 /* utils.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; name = utils.c; path = ../utils.c; sourceTree = SOURCE_ROOT; };
 		F541FB5E03B0B33401FF8235 /* scaler.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = scaler.h; path = ../ui/scaler/scaler.h; sourceTree = SOURCE_ROOT; };
@@ -1150,6 +1160,13 @@
 		B68CB2BC03DD91D800A804BA /* debugger */ = {
 			isa = PBXGroup;
 			children = (
+				D15E8F8C259F5C0B0006FC79 /* arch.h */,
+				D15E8F8D259F5C0B0006FC79 /* gdbserver_utils.c */,
+				D15E8F8E259F5C0B0006FC79 /* gdbserver_utils.h */,
+				D15E8F91259F5C0B0006FC79 /* gdbserver.c */,
+				D15E8F92259F5C0C0006FC79 /* gdbserver.h */,
+				D15E8F8F259F5C0B0006FC79 /* packets.c */,
+				D15E8F90259F5C0B0006FC79 /* packets.h */,
 				B66050EC0606AAF500247454 /* breakpoint.c */,
 				B66050ED0606AAF500247454 /* breakpoint.h */,
 				B68CB2BD03DD91ED00A804BA /* command.c */,
@@ -1832,6 +1849,7 @@
 				B61F466E09121DF100C8096C /* pokefinder.c in Sources */,
 				B61F466F09121DF100C8096C /* machine.c in Sources */,
 				B61F467009121DF100C8096C /* PokeFinderController.m in Sources */,
+				D15E8F95259F5C0C0006FC79 /* gdbserver.c in Sources */,
 				B61F467209121DF100C8096C /* MemoryBrowserController.m in Sources */,
 				B61F467309121DF100C8096C /* periph.c in Sources */,
 				B61F467909121DF100C8096C /* breakpoint.c in Sources */,
@@ -1956,10 +1974,12 @@
 				B6E1F1AD14F653FB00600EB0 /* specdrum.c in Sources */,
 				B6E1F1B114F6555400600EB0 /* disciple.c in Sources */,
 				B61700F7163EAFC600142336 /* PokeMemoryController.m in Sources */,
+				D15E8F93259F5C0C0006FC79 /* gdbserver_utils.c in Sources */,
 				B6F66E351E473D68005B270A /* memory_pages.c in Sources */,
 				B69BE5331660DF5300C5D0CE /* socket.c in Sources */,
 				B69BE5381660DF8B00C5D0CE /* movie.c in Sources */,
 				B69BE53C1660E01000C5D0CE /* am29f010.c in Sources */,
+				D15E8F94259F5C0C0006FC79 /* packets.c in Sources */,
 				B69BE5411660E02500C5D0CE /* w5100_socket.c in Sources */,
 				B69BE5421660E02500C5D0CE /* w5100.c in Sources */,
 				B69D8D4D1D6B34490031BAFC /* zip.c in Sources */,
@@ -2021,6 +2041,9 @@
 				HEADER_SEARCH_PATHS = (
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_1)/audiofile.framework/Headers",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_2)/gcrypt.framework/Headers",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_1)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_2)",
+					.,
 					..,
 				);
 				INFOPLIST_FILE = "Info-Fuse.plist";
@@ -2066,6 +2089,9 @@
 				HEADER_SEARCH_PATHS = (
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_1)/audiofile.framework/Headers",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_2)/gcrypt.framework/Headers",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_1)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_2)",
+					.,
 					..,
 				);
 				INFOPLIST_FILE = "Info-Fuse.plist";
@@ -2110,6 +2136,9 @@
 				HEADER_SEARCH_PATHS = (
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_1)/audiofile.framework/Headers",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_2)/gcrypt.framework/Headers",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_1)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_2)",
+					.,
 					..,
 				);
 				INFOPLIST_FILE = "Info-Fuse.plist";
@@ -2146,6 +2175,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_SHADOW = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				HEADER_SEARCH_PATHS = "";
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
@@ -2172,6 +2202,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_SHADOW = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				HEADER_SEARCH_PATHS = "";
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				RUN_CLANG_STATIC_ANALYZER = YES;
@@ -2195,6 +2226,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_SHADOW = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				HEADER_SEARCH_PATHS = "";
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				RUN_CLANG_STATIC_ANALYZER = YES;

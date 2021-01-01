@@ -43,6 +43,7 @@ enum debugger_mode_t
 };
 
 extern enum debugger_mode_t debugger_mode;
+extern char gdbserver_debugging_enabled;
 
 /* Which base should we display things in */
 extern int debugger_output_base;

@@ -1141,6 +1141,9 @@ save_as_exit:
 
 - (IBAction)cocoa_break:(id)sender
 {
+  if ( gdbserver_debugging_enabled ) {
+    return;
+  }
   if ( paused ) {
     debugger_mode = DEBUGGER_MODE_HALTED;
     paused = 0;
@@ -1338,6 +1341,15 @@ save_as_exit:
 - (void)ui_menu_activate_media_cartridge:(NSNumber*)active
 {
   [cartridge setEnabled:[active boolValue]];
+}
+
+- (void)ui_menu_activate_debugger:(NSNumber*)active
+{
+  if (![active boolValue])
+  {
+    [debugger setTarget:nil];
+    [debugger setAction:NULL];
+  }
 }
 
 - (void)ui_menu_activate_media_cartridge_dock:(NSNumber*)active
@@ -3249,6 +3261,10 @@ ui_menu_activate( ui_menu_item item, int active )
 
   case UI_MENU_ITEM_MACHINE_MULTIFACE:
     method = @selector(ui_menu_activate_multiface:);
+    break;
+    
+  case UI_MENU_ITEM_DEBUGGER:
+    method = @selector(ui_menu_activate_debugger:);
     break;
       
   default:

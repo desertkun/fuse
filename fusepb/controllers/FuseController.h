@@ -56,6 +56,7 @@
   IBOutlet NSMenuItem *pause;
   IBOutlet NSMenuItem *tapePlay;
   IBOutlet NSMenuItem *tapeRecord;
+  IBOutlet NSMenuItem *debugger;
   IBOutlet NSMenu *recentSnaps;
   IBOutlet NSWindow *window;
 

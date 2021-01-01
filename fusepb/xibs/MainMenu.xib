@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12121"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -698,6 +698,7 @@
         <customObject id="346" userLabel="FuseController" customClass="FuseController">
             <connections>
                 <outlet property="cartridge" destination="1118" id="1154"/>
+                <outlet property="debugger" destination="458" id="nBi-4W-qG3"/>
                 <outlet property="diskA" destination="1078" id="1150"/>
                 <outlet property="diskB" destination="1081" id="1151"/>
                 <outlet property="diskFlipA" destination="1099" id="1157"/>

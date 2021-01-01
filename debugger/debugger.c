@@ -24,6 +24,7 @@
 #include <config.h>
 
 #include "debugger.h"
+#include "gdbserver.h"
 #include "debugger_internals.h"
 #include "event.h"
 #include "fuse.h"
@@ -37,6 +38,7 @@
 
 /* The current activity state of the debugger */
 enum debugger_mode_t debugger_mode;
+char gdbserver_debugging_enabled = 0;
 
 /* Which base should we display things in */
 int debugger_output_base;
@@ -101,7 +103,14 @@ debugger_register_startup( void )
 int
 debugger_trap( void )
 {
-  return ui_debugger_activate();
+  if (gdbserver_debugging_enabled)
+  {
+      return gdbserver_activate();
+  }
+  else
+  {
+      return ui_debugger_activate();
+  }
 }
 
 /* Step one instruction */
@@ -109,6 +118,12 @@ int
 debugger_step( void )
 {
   debugger_mode = DEBUGGER_MODE_HALTED;
+  
+  if (gdbserver_debugging_enabled)
+  {
+    return 0;
+  }
+  
   ui_debugger_deactivate( 0 );
   return 0;
 }
@@ -140,6 +155,12 @@ debugger_run( void )
   debugger_mode = debugger_breakpoints ?
                   DEBUGGER_MODE_ACTIVE :
                   DEBUGGER_MODE_INACTIVE;
+  
+  if (gdbserver_debugging_enabled)
+  {
+    return 0;
+  }
+  
   ui_debugger_deactivate( 1 );
   return 0;
 }

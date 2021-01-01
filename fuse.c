@@ -54,6 +54,7 @@
 #endif
 
 #include "debugger/debugger.h"
+#include "debugger/gdbserver.h"
 #include "display.h"
 #include "event.h"
 #include "fuse.h"
@@ -391,9 +392,26 @@ int fuse_init(int argc, char **argv)
   if( setup_start_files( &start_files ) ) return 1;
   if( parse_nonoption_args( argc, argv, first_arg, &start_files ) ) return 1;
   if( do_start_files( &start_files ) ) return 1;
-
-  /* Must do this after all subsytems are initialised */
-  debugger_command_evaluate( settings_current.debugger_command );
+  
+  if (settings_current.gdbserver)
+  {
+      gdbserver_init();
+      
+      if (gdbserver_start(settings_current.gdbserver))
+      {
+          ui_error(UI_ERROR_ERROR, "Cannot start gdbserver on port %d", settings_current.gdbserver);
+      }
+      else
+      {
+          gdbserver_debugging_enabled = 1;
+          ui_menu_activate( UI_MENU_ITEM_DEBUGGER, 0 );
+      }
+  }
+  else
+  {
+      /* Must do this after all subsytems are initialised */
+      debugger_command_evaluate( settings_current.debugger_command );
+  }
 
   if( ui_mouse_present ) ui_mouse_grabbed = ui_mouse_grab( 1 );
 
